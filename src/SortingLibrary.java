@@ -4,8 +4,6 @@ public class SortingLibrary {
 
   //Generic implementation of Insertion Sort
   public static <T extends Comparable<T>> void insertionSort(T[] arr) {
-    long startTime = System.nanoTime();
-
     for (int i = 1; i < arr.length; i++) {
       T key = arr[i];
       //j is current index array is sorted up to
@@ -18,14 +16,10 @@ public class SortingLibrary {
       //insert key at correct index
       arr[++j] = key;
     }
-    //measures and outputs total time taken for sort in us
-    long totalTime = (System.nanoTime() - startTime) / 1000;
-    System.out.println("Total time: " + totalTime + " microseconds");
   }
 
   //Generic implementation of Selection Sort
   public static <T extends Comparable<T>> void selectionSort(T[] arr) {
-    long startTime = System.nanoTime();
     //only needs to loop up to n - 1 because it will be sorted at that point
     for (int i = 0; i < arr.length - 1; i++) {
       int minIndex = i;
@@ -39,21 +33,12 @@ public class SortingLibrary {
       arr[i] = arr[minIndex];
       arr[minIndex] = temp;
     }
-    //measures and outputs total time taken for sort in us
-    long totalTime = (System.nanoTime() - startTime) / 1000;
-    System.out.println("Total time: " + totalTime + " microseconds");
   }
 
   //Generic implementation of Merge Sort
   public static <T extends Comparable<T>> void mergeSort(T[] arr) {
-    long startTime = System.nanoTime();
-
     //call helper with initial indices
     mergeSortHelper(arr, 0, arr.length - 1);
-
-    //measures and outputs total time taken for sort in us
-    long totalTime = (System.nanoTime() - startTime) / 1000;
-    System.out.println("Total time: " + totalTime + " microseconds");
   }
 
   private static <T extends Comparable<T>> void mergeSortHelper(T[] arr, int p
