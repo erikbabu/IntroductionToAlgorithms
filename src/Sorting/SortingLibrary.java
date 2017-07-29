@@ -1,8 +1,15 @@
+package Sorting;
+
+import DataStructures.Heaps.MaxHeap;
+import DataStructures.Heaps.MinHeap;
+
 import java.util.stream.IntStream;
 
-public class SortingLibrary {
+public class SortingLibrary<T extends Comparable> {
 
   //Generic implementation of Insertion Sort
+  //O(n^2) run time
+  //quick for small input sizes
   public static <T extends Comparable<T>> void insertionSort(T[] arr) {
     for (int i = 1; i < arr.length; i++) {
       T key = arr[i];
@@ -35,7 +42,16 @@ public class SortingLibrary {
     }
   }
 
+  public static<T extends Comparable<T>> void heapSortAscending(T[] arr) {
+    new MaxHeap<>(arr).heapSort();
+  }
+
+  public static<T extends Comparable<T>> void heapSortDescending(T[] arr) {
+    new MinHeap<>(arr).heapSort();
+  }
+
   //Generic implementation of Merge Sort
+  //O(n lg n) run time
   public static <T extends Comparable<T>> void mergeSort(T[] arr) {
     //call helper with initial indices
     mergeSortHelper(arr, 0, arr.length - 1);
